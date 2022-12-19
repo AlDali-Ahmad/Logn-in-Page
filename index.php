@@ -6,14 +6,13 @@
     <title>Log in Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-     <link rel="stylesheet" href="dali.css">
      <style>
-        .img{
-            width: 100;
-            height: 100;
+        img{
+            width: 150px;
+            height: 150px;
             position: absolute;
-            top: calc(27% - 50px);
-            left:calc(50% - 50px);
+            top: calc(25% - 50px);
+            left:calc(50% - 70px);
         }
         h1{
             margin: 0;
@@ -48,14 +47,23 @@
             background: aqua;
             color: #262626;
         }
+        body{
+            margin: 0px;
+            padding: 0px;
+            background: url(bac.png);
+            background-size: cover ;
+            font-family: sans-serif;
+        }
      </style>
   </head>
 
   <body>
+
     <div class="d-flex align-items-center min-vh-100">
         <div class="container d-flex justify-content-center">
-            <img src="login.png" class="img">
+         <img src="login.png" class="img">
                 <form method="post" action="dali.php" >
+                    <br>
                 <h1 class="text-center mb-3">Login</h1>
                 <div class="mb-4">
                     <input type="email"  name="email" class="form-control" placeholder="Email"  required> 
@@ -66,7 +74,7 @@
                 <div class="mb-3">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="register.php" style="font-size: 12px;" class="text-decoration=none">Create an account</a>
                 </div>       
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="submit" class="btn btn-success" >&nbsp;&nbsp;&nbsp;&nbsp; Login &nbsp;&nbsp;&nbsp;&nbsp;</button>                        
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="submit"  >&nbsp;&nbsp;&nbsp;&nbsp; Login &nbsp;&nbsp;&nbsp;&nbsp;</button>     
             </form>
         </div>
     </div>
