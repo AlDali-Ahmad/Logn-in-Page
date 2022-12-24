@@ -50,22 +50,66 @@
             background-color: aqua;
             color: #262626;
         }
+        span{
+            color: #ff267e;
+            font-size: 15px;
+            font-family: cursive;
+        }
+        ::placeholder{
+            font-family: cursive;  
+        }
      </style>
   </head>
 
   <body>
+  <?php
+        $email1 = $password1 = $password2 = '';
+        $emailerr = $passworderr1 = $passworderr2 = '';
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+      if (empty($_POST['email1'])) {
+          $emailerr = "Please fill in this field";
+      } else {
+          $email1 = $_POST['email1'];
+      }
+
+      if (empty($_POST['pass1'])) {
+          $passworderr1 = "Please fill in this field";
+      } else {
+          $password1 = $_POST['pass1'];
+      }
+      
+      if (empty($_POST['pass2'])) {
+          $passworderr2 = "Please fill in this field";
+      } else {
+            $password2 = $_POST['pass2']; 
+      }
+      if ($password1 != $password2) {
+            $passworderr2 = "Verify that the password is correct";
+      }
+
+      if (!empty($_POST['email1']) && !empty($_POST['pass1']) && !empty($_POST['pass2'])) {
+          header("Location:dali.php");
+          exit;
+      }
+  }
+?>
     <div class="d-flex align-items-center min-vh-100">
         <div class="container d-flex justify-content-center">
-            <form method="post" col-md-6 col-lg-5 col-xl-4 action="dali.php">
+            <form method="post" col-md-6 col-lg-5 col-xl-4 action="register.php">
                 <h1 class="text-center mb-4" style="color: aqua;">Register</h1>
                 <div class="mb-3">
-                    <input type="email" class="form-control" placeholder="Email" required> 
+                    <input type="email" class="form-control" name="email1" placeholder="Email" value="<?php echo $email1 ?>" > 
+                    <span><?php echo $emailerr ?></span>  
                 </div>
                 <div class="mb-4">
-                    <input type="password"  class="form-control" placeholder="password" required> 
+                    <input type="password"  class="form-control" name="pass1"  placeholder="password"> 
+                    <span><?php echo $passworderr1 ?></span>
                 </div>
                 <div class="mb-4">
-                    <input type="password"  class="form-control"  placeholder="confirm password" required> 
+                    <input type="password"  class="form-control" name="pass2" placeholder="confirm password"> 
+                    <span><?php echo $passworderr2 ?></span>
                 </div>
                 <div class="mb-4">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="index.php" style="font-size: 12px;" class="text-decoration=none">Return to the login page</a>

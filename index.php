@@ -8,8 +8,8 @@
      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
      <style>
         img{
-            width: 150px;
-            height: 150px;
+            width: 125px;
+            height: 125px;
             position: absolute;
             top: calc(25% - 50px);
             left:calc(50% - 70px);
@@ -52,29 +52,62 @@
             padding: 0px;
             background: url(bac.png);
             background-size: cover ;
-            font-family: sans-serif;
+        }
+        span{
+            color: #ff267e;
+            font-size: 15px;
+            font-family: cursive;
+        }
+        ::placeholder{
+            font-family: cursive;
         }
      </style>
   </head>
 
   <body>
 
+   <?php
+        $email = $password = '';
+        $emailerr = $passworderr = '';
+
+   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+       if (empty($_POST['email'])) {
+           $emailerr = "Please fill in this field";
+       } else {
+           $email = $_POST['email'];
+       }
+
+       if(empty($_POST['pass'])){
+        $passworderr="Please fill in this field";
+       }else{
+           $password = $_POST['pass'];
+       }  
+   }
+   if(!empty($_POST['email']) && !empty($_POST['pass'])){
+    header("Location:dali.php");
+    exit;
+}
+   ?>
     <div class="d-flex align-items-center min-vh-100">
         <div class="container d-flex justify-content-center">
          <img src="login.png" class="img">
-                <form method="post" action="dali.php" >
+                <form method="post" action="index.php" >
+                    <br>
                     <br>
                 <h1 class="text-center mb-3">Login</h1>
                 <div class="mb-4">
-                    <input type="email"  name="email" class="form-control" placeholder="Email"  required> 
+                    <input type="email"  name="email" class="form-control" placeholder="Email" value="<?php echo $email ?>" >
+                    <span><?php echo $emailerr ?></span>     
                 </div>
                 <div class="mb-4">
-                    <input type="password" id="pass" name="pass" class="form-control" placeholder="password" required> 
+                    <input type="password" id="pass" name="pass" class="form-control"  placeholder="password" value="<?php echo $password ?>" > 
+                    <span><?php echo $passworderr ?></span> 
                 </div>
                 <div class="mb-3">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="register.php" style="font-size: 12px;" class="text-decoration=none">Create an account</a>
                 </div>       
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="submit"  >&nbsp;&nbsp;&nbsp;&nbsp; Login &nbsp;&nbsp;&nbsp;&nbsp;</button>     
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="submit">&nbsp;&nbsp;&nbsp;&nbsp; Login &nbsp;&nbsp;&nbsp;&nbsp;</button>     
             </form>
         </div>
     </div>
